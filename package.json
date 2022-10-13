@@ -1,0 +1,29 @@
+{
+  "name": "node-cleanarch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "typescript": "^4.8.4"
+  },
+  "engines": {
+    "node": "16.x"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rimraf dist && npx tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vbbarros/Node-CleanArch.git"
+  },
+  "author": "vinicius.britto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vbbarros/Node-CleanArch/issues"
+  },
+  "homepage": "https://github.com/vbbarros/Node-CleanArch#readme",
+  "dependencies": {
+    "rimraf": "^3.0.2"
+  }
+}
