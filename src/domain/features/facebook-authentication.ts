@@ -9,7 +9,7 @@ export namespace FacebookAuthentication {
     token: string
   }
 
-  export interface Result {
+  export type Result = {
     result: AccessToken | AuthenticationError
   }
 }
