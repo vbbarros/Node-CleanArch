@@ -11,8 +11,6 @@ export namespace LoadUserAccountRepository {
   export type Result = undefined | {
     name?: string
     id: string
-    facebookId: string
-    email: string
   }
 }
 
