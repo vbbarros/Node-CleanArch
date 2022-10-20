@@ -2,6 +2,7 @@ import { LoadFacebookUserApi } from '@/data/contracts/apis'
 import { LoadUserAccountRepository, SaveFacebookAccountRepository } from '@/data/contracts/repository'
 import { FacebookAuthentication } from '@/domain/features'
 import { AuthenticationError } from '@/domain/errors'
+import { FacebookAccount } from '@/domain/models'
 
 export class FacebookAuthenticationService {
   constructor (
@@ -14,12 +15,8 @@ export class FacebookAuthenticationService {
     const fbData = await this.loadFacebookUserApi.loadUser(params)
     if (fbData !== undefined) {
       const accountData = await this.loadUserAccountRepository.load({ email: fbData.email })
-      await this.saveFacebookAccountRepository.saveFromFacebook({
-        id: accountData?.id,
-        name: accountData?.name ?? fbData.name,
-        facebookId: fbData.facebookId,
-        email: fbData.email
-      })
+      const fbAccount = new FacebookAccount(fbData, accountData)
+      await this.saveFacebookAccountRepository.saveFromFacebook(fbAccount)
     }
     return new AuthenticationError()
   }
